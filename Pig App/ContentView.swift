@@ -8,18 +8,44 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        ZStack {
-            Color.gray.opacity(0.7).ignoresSafeArea()
-            VStack {
-                Image("Pig 1").resizable().frame(width: 150, height: 150)
-                Text("Pig")
+       @State private var turnScore = 0
+       @State private var gameScore = 0
 
-                Spacer()
-            }
-        }
-    }
-}
+       var body: some View {
+           ZStack {
+               Color.gray.opacity(0.25)
+                   .ignoresSafeArea()
+
+               VStack {
+                   
+                   CustomText(text: "Pig")
+                   Image("Pig 1")
+                       .resizable()
+                       .scaledToFit()
+                       .frame(width: 150, height: 150)
+
+                   
+                   CustomText(text: "Turn Score: \(turnScore)")
+
+                   
+                   CustomText(text: "Game Score: \(gameScore)")
+
+                   Spacer()
+               }
+           }
+       }
+   }
+
+   
+   struct CustomText: View {
+       let text: String
+
+       var body: some View {
+           Text(text)
+               .font(.custom("Marker Felt", size: 28))
+               .foregroundColor(.black)
+       }
+   }
 
 #Preview {
     ContentView()
